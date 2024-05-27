@@ -17,9 +17,9 @@ import com.vaadin.flow.router.RouteAlias;
 @RouteAlias(value = "", layout = MainLayout.class)
 public class HelloWorldView extends HorizontalLayout {
 
-    private TextField field;
-    private Button find;
-    private Grid<Personal> grid = new Grid<>(Personal.class);
+    private final TextField field;
+    private final Button find;
+    private final Grid<Personal> grid = new Grid<>(Personal.class);
 
 
 
@@ -27,9 +27,8 @@ public class HelloWorldView extends HorizontalLayout {
         field = new TextField("Your name");
         find = new Button("Say hello");
         find.addClickListener(e -> {
-            Notification.show("Hello " + field.getValue());
+
         });
-        find.addClickShortcut(Key.ENTER);
 
         setMargin(true);
         setVerticalComponentAlignment(Alignment.END, field, find);
