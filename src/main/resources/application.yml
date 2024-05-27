@@ -1,0 +1,13 @@
+server:
+  port: ${PORT:8082}
+spring:
+  application:
+    name:
+  datasource:
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5433/student}
+    username: ${JDBC_DATABASE_USERNAME:postgres}
+    password: ${JDBC_DATABASE_PASSWORD:TestTest}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update

@@ -1,8 +1,10 @@
 package com.example.application.views.helloworld;
 
+import com.example.application.model.Personal;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -15,21 +17,24 @@ import com.vaadin.flow.router.RouteAlias;
 @RouteAlias(value = "", layout = MainLayout.class)
 public class HelloWorldView extends HorizontalLayout {
 
-    private TextField name;
-    private Button sayHello;
+    private TextField field;
+    private Button find;
+    private Grid<Personal> grid = new Grid<>(Personal.class);
+
+
 
     public HelloWorldView() {
-        name = new TextField("Your name");
-        sayHello = new Button("Say hello");
-        sayHello.addClickListener(e -> {
-            Notification.show("Hello " + name.getValue());
+        field = new TextField("Your name");
+        find = new Button("Say hello");
+        find.addClickListener(e -> {
+            Notification.show("Hello " + field.getValue());
         });
-        sayHello.addClickShortcut(Key.ENTER);
+        find.addClickShortcut(Key.ENTER);
 
         setMargin(true);
-        setVerticalComponentAlignment(Alignment.END, name, sayHello);
+        setVerticalComponentAlignment(Alignment.END, field, find);
 
-        add(name, sayHello);
+        add(field, find);
     }
 
 }
